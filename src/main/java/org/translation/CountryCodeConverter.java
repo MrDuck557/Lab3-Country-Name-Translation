@@ -4,9 +4,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
-// TODO CheckStyle: Wrong lexicographical order for 'java.util.HashMap' import (remove this comment once resolved)
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,8 +13,8 @@ import java.util.Map;
  */
 public class CountryCodeConverter {
 
-    // TODO Task: pick appropriate instance variable(s) to store the data necessary for this class
-
+    private Map<String, String> codeToCountry;
+    private Map<String, String> countryToCode;
     /**
      * Default constructor which will load the country codes from "country-codes.txt"
      * in the resources folder.
@@ -31,11 +30,15 @@ public class CountryCodeConverter {
      */
     public CountryCodeConverter(String filename) {
 
+        codeToCountry = new HashMap<>();
+        countryToCode = new HashMap<>();
+
         try {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
 
             // TODO Task: use lines to populate the instance variable(s)
+
 
         }
         catch (IOException | URISyntaxException ex) {
