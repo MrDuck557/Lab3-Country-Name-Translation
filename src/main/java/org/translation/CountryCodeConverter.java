@@ -15,6 +15,7 @@ public class CountryCodeConverter {
 
     private Map<String, String> codeToCountry;
     private Map<String, String> countryToCode;
+
     /**
      * Default constructor which will load the country codes from "country-codes.txt"
      * in the resources folder.
@@ -37,9 +38,9 @@ public class CountryCodeConverter {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
 
-            for (String line: lines){
-                String parts[] = line.split(",");
-                if (parts.length == 2){
+            for (String line: lines) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
                     String code = parts[0].trim();
                     String country = parts[1].trim();
 
