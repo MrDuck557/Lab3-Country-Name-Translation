@@ -38,11 +38,11 @@ public class CountryCodeConverter {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
 
-            for (String line: lines) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    String code = parts[0].trim();
-                    String country = parts[1].trim();
+            for (String line: lines.subList(1, lines.size())) {
+                String[] parts = line.split("\t");
+                if (parts.length >= 3) {
+                    String country = parts[0].trim();
+                    String code = parts[2].trim().toLowerCase();
 
                     codeToCountry.put(code, country);
                     countryToCode.put(country, code);
